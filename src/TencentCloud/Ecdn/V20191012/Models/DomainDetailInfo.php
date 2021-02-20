@@ -80,9 +80,13 @@ use TencentCloud\Common\AbstractModel;
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setReadonly(string $Readonly) 设置域名锁定状态，normal、global 分别表示未被锁定，全球锁定。
 注意：此字段可能返回 null，表示取不到有效值。
- * @method array getTag() 获取域名标签
+ * @method array getTag() 获取域名标签。
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setTag(array $Tag) 设置域名标签
+ * @method void setTag(array $Tag) 设置域名标签。
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method WebSocket getWebSocket() 获取WebSocket配置。
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setWebSocket(WebSocket $WebSocket) 设置WebSocket配置。
 注意：此字段可能返回 null，表示取不到有效值。
  */
 class DomainDetailInfo extends AbstractModel
@@ -194,10 +198,16 @@ class DomainDetailInfo extends AbstractModel
     public $Readonly;
 
     /**
-     * @var array 域名标签
+     * @var array 域名标签。
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Tag;
+
+    /**
+     * @var WebSocket WebSocket配置。
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $WebSocket;
 
     /**
      * @param string $ResourceId 域名ID。
@@ -230,7 +240,9 @@ class DomainDetailInfo extends AbstractModel
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $Readonly 域名锁定状态，normal、global 分别表示未被锁定，全球锁定。
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param array $Tag 域名标签
+     * @param array $Tag 域名标签。
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param WebSocket $WebSocket WebSocket配置。
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -337,6 +349,11 @@ class DomainDetailInfo extends AbstractModel
                 $obj->deserialize($value);
                 array_push($this->Tag, $obj);
             }
+        }
+
+        if (array_key_exists("WebSocket",$param) and $param["WebSocket"] !== null) {
+            $this->WebSocket = new WebSocket();
+            $this->WebSocket->deserialize($param["WebSocket"]);
         }
     }
 }
